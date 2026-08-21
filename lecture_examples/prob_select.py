@@ -6,7 +6,7 @@
 import random
 from collections import Counter
 
-def sample(weighted_items: list[tuple[str, int]], num_tries: int):
+def sample(weighted_items: list[tuple[str, int]], num_tries: int) -> None:
     """
     Sample from discrete distribution of (item, weight) tuples.
     """
@@ -35,7 +35,6 @@ def sample(weighted_items: list[tuple[str, int]], num_tries: int):
             f"expected {expected_freq:.2f}"
         )
     print("-" * 60)
-
 
 if __name__ == "__main__":
     print("=== Example 1: Airplane Seating ===")

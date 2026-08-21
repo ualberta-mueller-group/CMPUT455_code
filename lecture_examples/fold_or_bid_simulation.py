@@ -6,7 +6,7 @@ import numpy as np
 from random import choices
 from collections import Counter
 
-def simulate(w, num_tries):
+def simulate(w: float, num_tries: int) -> float:
     print(f"\nSimulate w = {w:.2f}")
     items = ['win', 'loss']
     weights = [w, 1-w]
@@ -16,7 +16,7 @@ def simulate(w, num_tries):
     score = sum(count[item] * value[item] for item in items)
     return score
 
-def simulate_and_print(w, num_tries):
+def simulate_and_print(w: float, num_tries: int) -> None:
     score = simulate(w, num_tries)
     score_per_try = score / num_tries
     print(f"After {num_tries} tries with winning probability {w:.2f}:")
