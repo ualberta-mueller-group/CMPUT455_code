@@ -5,7 +5,7 @@
 from operator import mul
 
 def ev(p: list[float], values: list[int]) -> float:
-    return sum(map(mul, p, values))
+    return sum(map(mul, p, values), 0.0)
 
 if __name__ == "__main__":
     print()
