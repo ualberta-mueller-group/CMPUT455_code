@@ -10,7 +10,7 @@ BLACK = 1
 WHITE = 2   
 MAXSIZE = 7
 
-def print_board(board: list) -> None:
+def print_board(board: list[list[int]]) -> None:
     for row in board:
         print(*row)
     print()
