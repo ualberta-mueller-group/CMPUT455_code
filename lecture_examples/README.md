@@ -10,8 +10,11 @@ For simplicity, it is recommended to keep all code with dependencies in one dire
 ## Lecture 1 - Introduction to Games
 - `game_basics.py` Some basic definitions for two player games
 - `game.py` `Game` class - abstract base class for two player games
+- `player.py` `Player` class - abstract base class for Game Player
+- `random_player.py` `RandomPlayer` plays random legal moves
 - `tic_tac_toe.py` `TicTacToe` class - game board and rules
 - `tic_tac_toe_simulation_test.py` Run random simulations for TicTacToe and report statistics on results and game length
+- `play_match.py` Play a match between different players
 
 ## Lecture 2 - Game of Go and Computer Go
 - `go_2d.py` Code fragment - Go board implemented as "2-dimensional" list-of-lists
@@ -30,6 +33,10 @@ For simplicity, it is recommended to keep all code with dependencies in one dire
 artificial DAG
 
 # (For Later lectures)
+
+## (Old Lecture 12) Simulation Methods
+- `estimate_pi.py` Estimate pi with Monte Carlo sampling
+- `numerical_integration_MC.py` Numerical Integration with Monte Carlo sampling
 
 ## (Old Lecture 14) Probabilistic Simulation Policies and Bernoulli Experiments
 - `prob_select.py` Probabilistic selection from a list
