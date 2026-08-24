@@ -80,7 +80,7 @@ class TicTacToe(Game):
         assert is_empty_black_white(color)
         self.draw_winner = color
 
-    def static_eval_for_to_play(self) -> bool:
+    def boolean_eval(self) -> bool:
         win_color = self.winner()
         if (win_color == EMPTY) and (self.draw_winner != EMPTY):
             win_color = self.draw_winner
@@ -88,6 +88,14 @@ class TicTacToe(Game):
             return True
         assert win_color == opponent(self.to_play)
         return False
+
+    def int_eval(self) -> int:
+        UNKNOWN_VALUE = 1 # Just an example - heuristic value
+        win_color = self.winner()
+        if win_color == EMPTY:
+            if self.end_of_game(): return 0 # true draw value
+            else: return UNKNOWN_VALUE
+        else: return -10
     
     def legal_moves(self) -> list[int]:
         assert not self.end_of_game()
