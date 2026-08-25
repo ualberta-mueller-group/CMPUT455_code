@@ -34,6 +34,11 @@ class Game(ABC):
         return len(self.moves)
     
     @abstractmethod
+    def __str__(self) -> str:
+        """ Print game as str."""
+        pass
+
+    @abstractmethod
     def legal_moves(self) -> list[int]:
         pass
 
@@ -44,3 +49,22 @@ class Game(ABC):
         """
         pass
     
+    @abstractmethod
+    def undo_move(self) -> None:
+        """Implement if your game allows to undo a move.
+        """
+        pass
+
+    @abstractmethod
+    def boolean_eval(self) -> bool:
+        """Implement if your game allows a boolean evaluation.
+           Evaluate from to_play's point of view.
+        """
+        pass
+
+    @abstractmethod
+    def int_eval(self) -> int:
+        """Implement if your game allows an integer evaluation.
+           Evaluate from to_play's point of view.
+        """
+        pass
