@@ -3,6 +3,7 @@
 # Written by Martin Mueller
 
 import random
+from typing import Callable
 
 def throw6() -> bool:
     return random.random() < 1/6
@@ -20,9 +21,11 @@ def game2() -> bool:
         if throw_double6(): return True
     return False
 
-def analyse(game, game_name):
-    num_tries = 1000
-    wins = 0
+
+# Callable[[InputTypes], ReturnType]
+def analyse(game: Callable[[], bool], game_name: str) -> None:
+    num_tries: int = 1000
+    wins: int = 0
     for _ in range(num_tries):
         if game():
             wins += 1
