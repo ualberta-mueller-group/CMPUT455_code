@@ -12,7 +12,8 @@ BoardColor = Literal[0, 1, 2, 3]
 # Constants encoding the color of a point on the board
 BLACK: Final[Color] = 0  # Also: 'X', 'B', "The first of the two colors"
 WHITE: Final[Color] = 1  # Also: 'O', 'W', "The second of the two colors"
-EMPTY: Final[WinnerColor] = 2  # Also: neutral, "not one of the players"
+EMPTY: Final[WinnerColor] = 2  # Also used for: neutral
+DRAW: Final[WinnerColor] = 2  # Also: "not one of the players"
 BORDER: Final[BoardColor] = 3 # Used for padding, "off the board"
 
 COLOR_STR: Final[Tuple[str, str]] = ("Black", "White")
