@@ -121,7 +121,6 @@ class TicTacToe(Game):
             num_moves += 1
         return self.winner(), num_moves
 
-    def print(self) -> None:
-        print(self.board[0:3])
-        print(self.board[3:6])
-        print(self.board[6:9])
+    def __str__(self) -> str:
+        """ Print board as str."""
+        return f"{self.board[0:3]}\n{self.board[3:6]}\n{self.board[6:9]}"
