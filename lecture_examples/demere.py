@@ -32,8 +32,10 @@ def analyse(game: Callable[[], bool], game_name: str) -> None:
     print(f"{game_name}: {wins} wins, {num_tries - wins} losses "
           f"in {num_tries} tries, win percentage: {wins / num_tries:.4f}")
 
-if __name__ == "__main__":
+def test_demere() -> None:
     random.seed()
     analyse(game1, "Game 1")
     analyse(game2, "Game 2")
 
+if __name__ == "__main__":
+    test_demere()

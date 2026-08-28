@@ -27,12 +27,14 @@ def simulate_and_print(w: float, num_tries: int) -> None:
     else:
         print("fold is better")
     
+def run_fold_or_bid(num_tries: int) -> None:
+    w_range = np.arange(0.2, 0.31, 0.01) # try 0.2, 0.21, ..., 0.3
+    for w in w_range:
+        simulate_and_print(w, num_tries)
 
 if __name__ == "__main__":
     print("=== Example : EV for Fold or Bid Game ===\n")
     print("EV for fold: always -1\n")
     print("EV for bid: check different winning probabilities w")
-    num_tries = 1000
-    w_range = np.arange(0.2, 0.31, 0.01) # try 0.2, 0.21, ..., 0.3
-    for w in w_range:
-        simulate_and_print(w, num_tries)
+    
+    run_fold_or_bid(num_tries = 1000)
