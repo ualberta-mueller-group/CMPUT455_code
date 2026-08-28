@@ -3,3 +3,4 @@ __pycache__/
 /bin
 /lib
 pyvenv.cfg
+/lecture_examples/in_progress
