@@ -1,5 +1,5 @@
 # Cmput 455 sample code
-# Guessing the unknown winrate p from a Bernoulli distribution
+# Guess the unknown winrate p from a Bernoulli distribution
 # Written by Martin Mueller
 
 from bernoulli import bernoulli_experiment
