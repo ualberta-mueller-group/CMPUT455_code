@@ -5,8 +5,8 @@
 from game_basics import BLACK, WHITE, EMPTY
 from tic_tac_toe import TicTacToe
 
-def random_TTT(num_simulations: int) -> None:
-    print("Playing {} random TicTacToe games ...".format(num_simulations))
+def test_tic_tac_toe_simulation(num_simulations: int) -> None:
+    print(f"Playing {num_simulations} random TicTacToe games ...")
     t = TicTacToe()
     winner_stats = [0] * 3
     game_length = [0] * 10
@@ -15,12 +15,13 @@ def random_TTT(num_simulations: int) -> None:
         winner, length = t.simulate()
         winner_stats[winner] += 1
         game_length[length] += 1
-    print("{} wins for X, {} wins for O, {} draws".format(
-        winner_stats[BLACK],  winner_stats[WHITE], winner_stats[EMPTY]))
+    print(f"{winner_stats[BLACK]} wins for X, "
+          f"{winner_stats[WHITE]} wins for O, "
+          f"{winner_stats[EMPTY]} draws")
     print("Game length:")
-    for length in range(10):
-        if game_length[length] > 0:
-            print("Length {} : {}".format(length, game_length[length]))
+    for length, count in enumerate(game_length):
+        if count > 0:
+            print(f"Length {length} : {count}")
 
 if __name__ == "__main__":
-    random_TTT(10000)
+    test_tic_tac_toe_simulation(10000)
