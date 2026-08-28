@@ -1,16 +1,17 @@
 # Cmput 455 sample code
 # TicTacToe game board, rules, and a random game simulator
 # Includes the code() method to compute a "hash code" for 
-# use in a transposition table (This is actually a perfect code, 
-# not a lossy hash code, since the state space is so small)
+# use in a transposition table (This is actually a perfect hash code, 
+# not the usual lossy hash code, since the state space is so small
+# that all states map to small integers.)
 # Written by Martin Mueller
 
 import random
 from game_basics import Color, WinnerColor, EMPTY, BLACK, \
                         WHITE, is_empty_black_white, opponent
-from game import Game
+from game_3outcome import Game3Outcome
 
-class TicTacToe(Game):
+class TicTacToe(Game3Outcome):
 # Board is stored in array of size 9 as follows:
 # 0 1 2
 # 3 4 5
@@ -19,7 +20,6 @@ class TicTacToe(Game):
     def reset_game(self) -> None:
         super().reset_game()
         self.board = [EMPTY] * 9
-        self.draw_winner = EMPTY
 
     def reset_to_move_number(self, move_nr: int) -> None:
         num_undos = self.move_number() - move_nr
@@ -37,14 +37,13 @@ class TicTacToe(Game):
         assert not self.end_of_game()
         assert self.board[move] == EMPTY
         self.board[move] = self.to_play
-        self.moves.append(move)
-        self.switch_to_play()
+        super().play(move)
         return True
 
     def undo_move(self) -> None:
-        move = self.moves.pop()
+        move = self.last_move()
         self.board[move] = EMPTY
-        self.switch_to_play()
+        super().undo_move()
     
     def has_three(self, color: Color, p1: int, p2: int, p3: int) -> bool:
         return all(self.board[p] == color for p in (p1, p2, p3))
@@ -76,9 +75,6 @@ class TicTacToe(Game):
             return WHITE
         return EMPTY
 
-    def set_draw_winner(self, color: WinnerColor) -> None:
-        assert is_empty_black_white(color)
-        self.draw_winner = color
 
     def boolean_eval(self) -> bool:
         win_color = self.winner()
