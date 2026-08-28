@@ -42,19 +42,25 @@ class Game(ABC):
     def legal_moves(self) -> list[int]:
         pass
 
-    @abstractmethod
     def play(self, move: int)-> bool:
         """Returns True if the move was legal and could be played.
             If it returns False, the game state is unchanged.
         """
-        pass
+        self.moves.append(move)
+        self.switch_to_play()
+        return True
     
-    @abstractmethod
     def undo_move(self) -> None:
-        """Implement if your game allows to undo a move.
+        """Override and call super().undo_move() at the end 
+           if your implementation supports to undo a move.
         """
-        pass
+        self.moves.pop()
+        self.switch_to_play()
 
+    def last_move(self) -> int:
+        assert self.moves != []
+        return self.moves[-1]
+    
     @abstractmethod
     def boolean_eval(self) -> bool:
         """Implement if your game allows a boolean evaluation.
