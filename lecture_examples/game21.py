@@ -6,8 +6,7 @@
 # Written by Martin Mueller.
 
 from game import Game
-from game_basics import EMPTY, BLACK, WHITE, is_empty_black_white, opponent, \
-     Color, WinnerColor
+from game_basics import EMPTY, opponent, WinnerColor
 
 class Game21(Game):
     
