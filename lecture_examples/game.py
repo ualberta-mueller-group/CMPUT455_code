@@ -3,12 +3,11 @@
 # board, rules, and a random game simulator
 # A specific game class needs to inherit from Game and implement all 
 # methods marked as @abstractmethod.
-# See tic_tac_toe.py for an example.
-# Written by Martin Mueller with help from Gemini.
+# See game21.py for an example.
+# Written by Martin Mueller.
 
 from abc import ABC, abstractmethod
-from game_basics import EMPTY, BLACK, WHITE, is_empty_black_white, opponent, \
-     Color, WinnerColor
+from game_basics import BLACK, opponent, Color, WinnerColor
 
 class Game(ABC):
     
