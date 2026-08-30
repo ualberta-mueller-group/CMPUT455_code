@@ -2,7 +2,7 @@
 # game_basics.py: Game basics - constants and definitions for two player games
 # Written by Martin Mueller
 
-from game_basics import EMPTY, BLACK, WHITE, BORDER, is_black_white, \
+from game_basics import EMPTY, BLACK, WHITE, BORDER, DRAW, is_black_white, \
 is_empty_black_white, opponent, color_as_string, winner_as_string
 
 def test_game_basics() -> None:
@@ -18,6 +18,7 @@ def test_game_basics() -> None:
     assert(is_empty_black_white(BLACK))
     assert(is_empty_black_white(WHITE))
     assert(is_empty_black_white(EMPTY))
+    assert(not is_empty_black_white(BORDER))
     assert(not is_empty_black_white(4))
     assert(not is_empty_black_white(-1))
 
@@ -29,7 +30,7 @@ def test_game_basics() -> None:
 
     assert(winner_as_string(BLACK) == "Black")
     assert(winner_as_string(WHITE) == "White")
-    assert(winner_as_string(EMPTY) == "Draw")
+    assert(winner_as_string(DRAW) == "Draw")
 
 if __name__ == "__main__":
     test_game_basics()

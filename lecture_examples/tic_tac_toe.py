@@ -73,7 +73,7 @@ class TicTacToe(Game3Outcome):
             return BLACK
         if self.is_winner(WHITE):
             return WHITE
-        return EMPTY
+        return EMPTY # EMPTY == DRAW here.
 
 
     def boolean_eval(self) -> bool:

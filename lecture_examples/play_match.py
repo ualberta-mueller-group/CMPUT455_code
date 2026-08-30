@@ -2,7 +2,7 @@
 # Play match between several players
 # Written by Martin Mueller
 
-from game_basics import BLACK, WHITE, EMPTY, WinnerColor
+from game_basics import BLACK, WHITE, DRAW, WinnerColor
 from game import Game
 from player import Player
 
@@ -37,7 +37,7 @@ def play_match(game: Game, player1: Player, player2: Player, num_games: int) -> 
 def print_stats(stats: Stats, player1: Player, player2: Player) -> None:
     print(f"{stats[BLACK]} wins for {player1.name()}, "
           f"{stats[WHITE]} wins for {player2.name()}, "
-          f"{stats[EMPTY]} draws")
+          f"{stats[DRAW]} draws")
 
 def play_match_both_colors(game: Game, player1: Player, player2: Player, num_games: int) -> None:
     # player1 is X
@@ -47,9 +47,9 @@ def play_match_both_colors(game: Game, player1: Player, player2: Player, num_gam
     # Compute combined statistics - reversed colors in second match
     stats1[BLACK] += stats2[WHITE]
     stats1[WHITE] += stats2[BLACK]
-    stats1[EMPTY] += stats2[EMPTY]
+    stats1[DRAW] += stats2[DRAW]
     print("Total:")
     print_stats(stats1, player1, player2)
-    wins: float = (stats1[BLACK] + 0.5 * stats1[EMPTY]) / (2 * num_games)
-    print("Percentage for {0} = {1:.2f}".format(player1.name(), 100 * wins))
+    wins: float = (stats1[BLACK] + 0.5 * stats1[DRAW]) / (2 * num_games)
+    print(f"Percentage for {player1.name()} = {100 * wins:.2f}")
 

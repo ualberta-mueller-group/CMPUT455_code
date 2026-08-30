@@ -2,7 +2,7 @@
 # Run random simulations on empty TicTacToe board and report win statistics
 # Written by Martin Mueller
 
-from game_basics import BLACK, WHITE, EMPTY
+from game_basics import BLACK, WHITE, DRAW
 from tic_tac_toe import TicTacToe
 
 def test_tic_tac_toe_simulation(num_simulations: int) -> None:
@@ -17,7 +17,7 @@ def test_tic_tac_toe_simulation(num_simulations: int) -> None:
         game_length[length] += 1
     print(f"{winner_stats[BLACK]} wins for X, "
           f"{winner_stats[WHITE]} wins for O, "
-          f"{winner_stats[EMPTY]} draws")
+          f"{winner_stats[DRAW]} draws")
     print("Game length:")
     for length, count in enumerate(game_length):
         if count > 0:

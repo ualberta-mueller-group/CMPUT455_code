@@ -1,4 +1,4 @@
-from game_basics import EMPTY, BLACK, WHITE
+from game_basics import EMPTY, BLACK, WHITE, DRAW
 from tic_tac_toe import TicTacToe
 
 def assert_is_initial_state(game: TicTacToe) -> None:
@@ -52,7 +52,7 @@ def test_draw() -> None:
     for move in [0, 1, 2, 4, 3, 5, 7, 6, 8]:
         game.play(move)
     assert game.end_of_game()
-    assert game.winner() == EMPTY
+    assert game.winner() == DRAW
 
 def test_reset_to_move_number() -> None:
     game = TicTacToe()
