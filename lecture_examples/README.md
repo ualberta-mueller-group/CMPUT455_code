@@ -13,6 +13,7 @@ For simplicity, it is recommended to keep all code with dependencies in one dire
 - `player.py` `Player` class - abstract base class for Game Player
 - `random_player.py` `RandomPlayer` plays random legal moves
 - `game21.py` `Game21` class - simple game
+    - `random_game21.py` use `RandomPlayer` to play `Game21`
 - `tic_tac_toe.py` `TicTacToe` class - game board and rules
     - `game_3outcome.py` abstract base class for win-loss-draw games
        such as TicTacToe
