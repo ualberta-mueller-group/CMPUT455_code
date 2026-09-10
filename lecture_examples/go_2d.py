@@ -5,9 +5,9 @@
 # Inner lists: one list of points for each row
 # Written by Martin Mueller
 
-EMPTY = 0
-BLACK = 1
-WHITE = 2   
+BLACK = 0
+WHITE = 1   
+EMPTY = 2
 MAXSIZE = 7
 
 def print_board(board: list[list[int]]) -> None:
