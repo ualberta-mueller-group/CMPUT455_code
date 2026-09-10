@@ -7,7 +7,7 @@ Some of the code builds on earlier code via `import`. For example,
 `game.py` imports `game_basics.py`. 
 For simplicity, it is recommended to keep all code with dependencies in one directory.
 
-## Lecture 1 - Introduction to Games
+## Lecture 1 and 3 - Introduction to Games
 - `game_basics.py` Some basic definitions for two player games
 - `game.py` `Game` class - abstract base class for two player games
 - `player.py` `Player` class - abstract base class for Game Player
