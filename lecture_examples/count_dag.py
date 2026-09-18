@@ -38,16 +38,17 @@ def compute_game_DAG_size(n: int) -> None:
         pos: int = black_pos * white_pos
         positions_at_depth[num_stones] = pos
         if num_stones > 0:
-            print("Branching factor:", pos /
-                                       positions_at_depth[num_stones-1])
-        print(pos, "positions at depth ", num_stones)
-    print("Total positions: ", sum(positions_at_depth))
-    print("Compare with factorial:", math.factorial(n))
+            br = pos / positions_at_depth[num_stones-1]
+            print(f"Effective branching factor from depth {num_stones-1} "
+                  f"to {num_stones}: {br:.2f}") 
+        print(f"{pos} positions at depth {num_stones}")
+    print(f"Total positions: {sum(positions_at_depth)}")
+    print(f"Compare with factorial: {math.factorial(n)}")
 
 if __name__ == "__main__":
     print("Simplified TicTacToe:")
     compute_game_DAG_size(9)
-    print("\nSimplified 7x7 Go:")
-    compute_game_DAG_size(7*7)
+#     print("\nSimplified 7x7 Go:")
+#     compute_game_DAG_size(7*7)
 #     print("\nSimplified 19x19 Go:")
 #     compute_game_DAG_size(19*19)
