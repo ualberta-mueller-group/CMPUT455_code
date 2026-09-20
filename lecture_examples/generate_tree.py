@@ -2,8 +2,7 @@
 # Generate a tree of depth d and uniform branching factor b
 # Written by Martin Mueller
 
-type AdjList = dict[int, list[int]]
-type Tree = AdjList
+from tree import Tree
 
 def generate_tree(b: int, d: int) -> tuple[Tree, int]:
     """Creates a tree of depth d and uniform branching factor b 
