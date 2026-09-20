@@ -45,7 +45,7 @@ artificial DAG
     - `tree.py` Tree implemented as dictionary of adjacency lists
 - `heuristic\_search\_on\_tree.py` Even a weak heuristic helps to find the treasure
 
-## Lectures 8 - 10, Minimax Search and Alphabeta
+## NOT YET Lectures 8 - 10, Minimax Search and Alphabeta
 
 ### Boolean minimax
 - `boolean\_minimax.py` minimax with separate treatment of AND and OR nodes
