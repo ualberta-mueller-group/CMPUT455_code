@@ -40,3 +40,5 @@ def winner_as_string(color: WinnerColor) -> str:
     assert is_empty_black_white(color)
     return WINNER_STR[color]
 
+def win_str(win: bool) -> str:
+    return "win" if win else "**LOSS**"

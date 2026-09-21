@@ -63,9 +63,16 @@ class Game(ABC):
     @abstractmethod
     def boolean_eval(self) -> bool:
         """Implement if your game allows a boolean evaluation.
-           Evaluate from to_play's point of view.
+           Evaluate from to_play's point of view (negamax).
         """
         pass
+
+    def boolean_eval_black(self) -> bool:
+        """
+           Evaluate from black player's point of view.
+           Used only in plain boolean minimax.
+        """
+        return self.boolean_eval() == (self.to_play == BLACK)
 
     @abstractmethod
     def int_eval(self) -> int:
