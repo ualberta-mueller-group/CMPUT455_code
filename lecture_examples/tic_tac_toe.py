@@ -82,7 +82,6 @@ class TicTacToe(Game3Outcome):
             win_color = self.draw_winner
         if win_color == self.to_play:
             return True
-        assert win_color == opponent(self.to_play)
         return False
 
     def int_eval(self) -> int:
@@ -117,6 +116,14 @@ class TicTacToe(Game3Outcome):
             num_moves += 1
         return self.winner(), num_moves
 
+    def row_str(self, row: int) -> str:
+        piece = ['X', 'O', '.']
+        start: int = 3 * row
+        s: str = ""
+        for p in range(start, start+3):
+            s += piece[self.board[p]]
+        return s
+    
     def __str__(self) -> str:
         """ Print board as str."""
-        return f"{self.board[0:3]}\n{self.board[3:6]}\n{self.board[6:9]}"
+        return f"{self.row_str(0)}\n{self.row_str(1)}\n{self.row_str(2)}"
