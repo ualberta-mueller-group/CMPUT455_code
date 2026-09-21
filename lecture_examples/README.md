@@ -45,14 +45,15 @@ artificial DAG
     - `tree.py` Tree implemented as dictionary of adjacency lists
 - `heuristic\_search\_on\_tree.py` Even a weak heuristic helps to find the treasure
 
-## NOT YET Lectures 8 - 10, Minimax Search and Alphabeta
 
-### Boolean minimax
-- `boolean\_minimax.py` minimax with separate treatment of AND and OR nodes
-- `boolean\_negamax.py` negamax reformulation of minimax - from `to_play`'s point of view
-- TODO `solve_game21.py` Solve Game21 with negamax
+## Lecture 8 - Boolean minimax
+- `minimax\_boolean.py` minimax with separate treatment of AND and OR nodes
+- `negamax\_boolean.py` negamax reformulation of minimax - from `to_play`'s point of view
+- `solve_minimax_game21.py`, `solve_negamax_game21.py` Solve Game21 with minimax and negamax
 
     - `boolean\_negamax\_test\_tictactoe.py` - solve TicTacToe with two searches
+
+## NOT YET Lectures 9 - 10, Minimax Search and Alphabeta
 
 ### Minimax with integer values, Alphabeta algorithm
 - `minimax\_sample\_tree.py`, `minimax\_sample\_tree\_data.py` artificial game tree to illustrate minimax and alphabeta
