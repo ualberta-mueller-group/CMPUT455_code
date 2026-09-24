@@ -39,42 +39,45 @@ For simplicity, it is recommended to keep all code with dependencies in one dire
 artificial DAG
 
 ## Lecture 7 - Introduction to Search
-- `blind\_search\_on\_tree.py` Find a treasure hidden in a tree by blind search
+- `blind_search_on_tree.py` Find a treasure hidden in a tree by blind search
     - `bfs.py` Breadth-first search on tree
     - `dfs.py` Depth-first search on tree
     - `tree.py` Tree implemented as dictionary of adjacency lists
-- `heuristic\_search\_on\_tree.py` Even a weak heuristic helps to find the treasure
+- `heuristic_search_on_tree.py` Even a weak heuristic helps to find the treasure
 
 
 ## Lecture 8 - Boolean minimax
-- `minimax\_boolean.py` minimax with separate treatment of AND and OR nodes
-- `negamax\_boolean.py` negamax reformulation of minimax - from `to_play`'s point of view
+- `minimax_boolean.py` minimax with separate treatment of AND and OR nodes
+- `negamax_boolean.py` negamax reformulation of minimax - from `to_play`'s point of view
 - `solve_minimax_game21.py`, `solve_negamax_game21.py` Solve Game21 with minimax and negamax
+- `solve_boolean.py` Call a boolean solver for a game
+    - `solve_boolean_tictactoe.py` - "solve" TicTacToe with a boolean question - can Black win, or can Black not win?
 
-    - `boolean\_negamax\_test\_tictactoe.py` - solve TicTacToe with two searches
+## Quiz extras (optional) 
+In `lecture_examples/quiz_extras`
+- `demere_q1_simulation.py` Quiz 1, simulation of De Mere's Game with 25 throws
+- `game21_random_dp.py` Quiz 2, 21 Game random player winning probability with dynamic programming
 
 ## NOT YET Lectures 9 - 10, Minimax Search and Alphabeta
 
 ### Minimax with integer values, Alphabeta algorithm
-- `minimax\_sample\_tree.py`, `minimax\_sample\_tree\_data.py` artificial game tree to illustrate minimax and alphabeta
-- `naive\_minimax.py`, `naive\_negamax.py`, `naive\_minimax\_negamax\_test.py` minimax and negamax without any pruning, tests on sample tree
+- `minimax_sample_tree.py`, `minimax_sample_tree_data.py` artificial game tree to illustrate minimax and alphabeta
+- `naive_minimax.py`, `naive_negamax.py`, `naive_minimax_negamax_test.py` minimax and negamax without any pruning, tests on sample tree
 - `alphabeta.py` Alphabeta algorithm, negamax style
-    - `alphabeta\_test.py`
-    - `alphabeta\_depth\_limited.py` Version with limited search depth
-        - `alphabeta\_depth\_limited\_tictactoe\_test.py`
+    - `alphabeta_test.py`
+    - `alphabeta_depth_limited.py` Version with limited search depth
+        - `alphabeta_depth_limited_tictactoe_test.py`
 
 ### Search enhancements: transposition table
-- `transposition\_table\_simple.py` Python dictionary as Transposition Table
-- `boolean\_negamax\_tt.py` Boolean Negamax with Simple Transposition Table
-    - `tic\_tac\_toe\_solve\_with\_tt.py` 
+- `transposition_table_simple.py` Python dictionary as Transposition Table
+- `boolean_negamax_tt.py` Boolean Negamax with Simple Transposition Table
+    - `tic_tac_toe_solve_with_tt.py` 
 
 ### Counting the size of state spaces in tree and DAG model, solution trees
-- `tic\_tac\_toe\_estimate\_tree.py` 
-- `tic\_tac\_toe\_count\_tree.py` 
-- `tic\_tac\_toe\_count\_dag.py` 
-- `tic\_tac\_toe\_solve\_all.py` Solve All TicTacToe States
-- `` 
-- `` 
+- `tic_tac_toe_estimate_tree.py` 
+- `tic_tac_toe_count_tree.py` 
+- `tic_tac_toe_count_dag.py` 
+- `tic_tac_toe_solve_all.py` Solve All TicTacToe States
 
 ## Other
 - `test_all.py` Run all unit tests. Also tests some other functions
