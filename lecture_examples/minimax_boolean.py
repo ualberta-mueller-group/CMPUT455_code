@@ -7,7 +7,7 @@ from typing import Tuple
 from game import Game
 from game_basics import BLACK, WHITE
 
-def minimax_boolean_or(state):
+def minimax_boolean_or(state: Game) -> bool:
     """Can BLACK can force a win? (OR node)"""
     assert state.to_play == BLACK
     if state.end_of_game():
@@ -20,7 +20,7 @@ def minimax_boolean_or(state):
             return True
     return False
 
-def minimax_boolean_and(state):
+def minimax_boolean_and(state: Game) -> bool:
     """Can BLACK can force a win against all white moves? (AND node)"""
     assert state.to_play == WHITE
     if state.end_of_game():
@@ -36,9 +36,6 @@ def minimax_boolean_and(state):
 def minimax_boolean_timed(state: Game) -> Tuple[bool, float]: 
     """Can BLACK force a win from state?"""
     start: float = time.process_time() # does NOT account for system overhead
-    if state.to_play == BLACK:
-        win: bool = minimax_boolean_or(state)
-    else:
-        win: bool = minimax_boolean_and(state)
+    win: bool = minimax_boolean_or(state) if state.to_play == BLACK else minimax_boolean_and(state)
     time_used: float = time.process_time() - start
     return win, time_used
