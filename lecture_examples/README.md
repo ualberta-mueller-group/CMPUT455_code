@@ -52,6 +52,7 @@ artificial DAG
 - `solve_minimax_game21.py`, `solve_negamax_game21.py` Solve Game21 with minimax and negamax
 - `solve_boolean.py` Call a boolean solver for a game
     - `solve_boolean_tictactoe.py` - "solve" TicTacToe with a boolean question - can Black win, or can Black not win?
+- **New Sep 25, from class** `shortcut_eval.py` Shows analogy between cutoffs in boolean minimax, and shortcut evaluation in programming languages
 
 ## Quiz extras (optional) 
 In `lecture_examples/quiz_extras`
