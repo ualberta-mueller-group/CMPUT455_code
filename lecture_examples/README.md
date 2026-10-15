@@ -95,6 +95,7 @@ In `lecture_examples/quiz_extras`
 
 ### (Lecture Simulation Methods)
 - `estimate_pi.py` Estimate pi with Monte Carlo sampling
+    - `demo_pi.py` Same with UI
 - `numerical_integration_MC.py` Numerical Integration with Monte Carlo sampling
 
 ### (Lecture Probabilistic Simulation Policies and Bernoulli Experiments)
