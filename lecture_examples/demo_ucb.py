@@ -21,6 +21,7 @@ class UCBDemo:
         # Persistent state for step-by-step simulations
         self.total_sims = 0
         self.stats = []
+        self.latest_result = None
 
         # UI Widget Axes
         self.ax_radio = plt.axes([0.72, 0.70, 0.23, 0.18], facecolor='#f4f4f4')
@@ -40,6 +41,7 @@ class UCBDemo:
         self.btn_10 = Button(self.ax_btn_10, '+10', color='#e0e0e0', hovercolor='#d0d0d0')
         self.btn_100 = Button(self.ax_btn_100, '+100', color='#e0e0e0', hovercolor='#d0d0d0')
         self.btn_reset = Button(self.ax_btn_reset, 'Reset', color='#ffcccc', hovercolor='#ffaaaa')
+        self.txt_result = self.fig.text(0.84, 0.12, '', fontsize=26, fontweight='bold', ha='center', va='center')
 
         # Attach callbacks
         self.radio.on_clicked(self.reset)
@@ -55,6 +57,7 @@ class UCBDemo:
         payoffs = TEST_CASES[self.radio.value_selected]
         self.stats = [UCBStatistic() for _ in range(len(payoffs))]
         self.total_sims = 0
+        self.latest_result = None
         self.draw()
 
     def step(self, steps: int):
@@ -68,9 +71,13 @@ class UCBDemo:
                 
             move = max(range(num_arms), key=get_score)
             p = payoffs[move]
-            self.stats[move].wins += simulation_result(p)
+            res = simulation_result(p)
+            self.stats[move].wins += res
             self.stats[move].sims += 1
             self.total_sims += 1
+            text = f"Arm {move} "
+            text += "WIN" if res == 1 else "LOSS"
+            self.latest_result = text
             
         self.draw()
 
@@ -117,7 +124,7 @@ class UCBDemo:
         self.ax_stats.scatter(
             valid_indices, valid_ucbs, 
             color='#2ca02c', edgecolor='black', linewidth=0.8, s=70, zorder=5, 
-            label=r'UCB Upper Bound'
+            label=r'UCB Upper Conf. Bound'
         )
 
         self.ax_stats.set_title(f'UCB Arm Statistics (C = {C:.2f}, Total Sims = {self.total_sims})', fontsize=12, pad=10)
@@ -140,6 +147,11 @@ class UCBDemo:
         for i, count in enumerate(pulls):
             self.ax_pulls.text(i, count + (max_pull * 0.02), str(count), ha='center', va='bottom', fontsize=9)
 
+        if self.latest_result:
+            self.txt_result.set_text(self.latest_result)
+            self.txt_result.set_color('#2ca02c' if self.latest_result == 'WIN' else '#d62728')
+        else:
+            self.txt_result.set_text('')
         self.fig.canvas.draw_idle()
 
 if __name__ == "__main__":
