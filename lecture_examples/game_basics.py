@@ -15,6 +15,7 @@ WHITE: Final[Color] = 1  # Also: 'O', 'W', "The second of the two colors"
 EMPTY: Final[WinnerColor] = 2  # Also used for: neutral
 DRAW: Final[WinnerColor] = 2  # Also: "not one of the players"
 BORDER: Final[BoardColor] = 3 # Used for padding, "off the board"
+NO_MOVE: int = -1
 
 COLOR_STR: Final[Tuple[str, str]] = ("Black", "White")
 WINNER_STR: Final[Tuple[str, str, str]] = ("Black", "White", "Draw")

@@ -57,6 +57,16 @@ class Game(ABC):
         self.moves.pop()
         self.switch_to_play()
 
+    def reset_to_move_number(self, move_nr: int) -> None:
+        """Override if your game supports a more efficient way,
+           or does not allow to undo a move.
+        """
+        num_undos = self.move_number() - move_nr
+        assert num_undos >= 0
+        for _ in range(num_undos):
+            self.undo_move()
+        assert self.move_number() == move_nr
+
     def last_move(self) -> int:
         assert self.moves != []
         return self.moves[-1]
@@ -94,3 +104,8 @@ class Game(ABC):
         """Heuristic or exact hash code.
         """
         pass
+
+    def simulate(self) -> tuple[WinnerColor, int]:
+        """Simulate one game. Must override to use.
+        """
+        assert False
