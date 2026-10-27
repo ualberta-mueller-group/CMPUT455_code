@@ -46,7 +46,7 @@ artificial DAG
 - `heuristic_search_on_tree.py` Even a weak heuristic helps to find the treasure
 
 
-## Lecture 8 - Boolean minimax
+## Lecture 8 - Boolean Minimax
 - `minimax_boolean.py` minimax with separate treatment of AND and OR nodes
 - `negamax_boolean.py` negamax reformulation of minimax - from `to_play`'s point of view
 - `solve_minimax_game21.py`, `solve_negamax_game21.py` Solve Game21 with minimax and negamax
@@ -54,7 +54,7 @@ artificial DAG
     - `solve_boolean_tic_tac_toe.py` - "solve" TicTacToe with a boolean question - can Black win, or can Black not win?
 - **New Sep 25, from class** `shortcut_eval.py` Shows analogy between cutoffs in boolean minimax, and shortcut evaluation in programming languages
 
-## Quiz extras (optional) 
+## Quiz Extras (optional) 
 In `lecture_examples/quiz_extras`
 - `demere_q1_simulation.py` Quiz 1, simulation of De Mere's Game with 25 throws
 - `game21_random_dp.py` Quiz 2, 21 Game random player winning probability with dynamic programming
@@ -83,26 +83,32 @@ In `lecture_examples/quiz_extras`
 - `negamax_boolean_tt.py` Boolean Negamax with Simple Transposition Table
     - `solve_with_tt_tic_tac_toe.py` Solve Tic Tac Toe as a draw with two boolean searches as in Lecture 9
     - `solve_negamax_tt_game21.py` Solve Game21 up to 1000 tokens instantly
+    - `negamax_boolean_tt_id.py` Negamax with iterative deepening and TT
 
 ### Counting the size of state spaces in tree and DAG model, solution trees
 - `tic_tac_toe_estimate_tree.py` Simple tree model estimate
 - `tic_tac_toe_count.py` Count states in tree and DAG models
 - `tic_tac_toe_solve_all.py` Solve All TicTacToe States in tree and DAG models
 
-## Other
-- `test_all.py` Run all unit tests, and test some other functions
-
-## (For future lectures)
-
-### (Lecture Simulation Methods)
+## Lecture 12 - Simulation Methods
 - `estimate_pi.py` Estimate pi with Monte Carlo sampling
     - `demo_pi.py` Same with UI
 - `numerical_integration_MC.py` Numerical Integration with Monte Carlo sampling
+- `simulation\_player.py`, `perfect\_player.py` more simple players for `play_match.py`
 
-### (Lecture Probabilistic Simulation Policies and Bernoulli Experiments)
+## Lecture 14 - Probabilistic Simulations
 - `prob_select.py` Probabilistic selection from a list
 - `bernoulli.py` Run repeated Bernoulli experiment
 - `bernoulli_mystery.py` Guess the unknown parameter p of a repeated Bernoulli experiment
+
+## Lecture 15 - UCB
+- `ucb.py`, `demo\_ucb.py` UCB algorithm and demo
+
+## Other
+- NOT UPDATED YET `test_all.py` Run all unit tests, and test some other functions
+
+## (For future lectures)
+
 
 ### (Lecture Neural Nets)
 - `nn.py`, `nn3.py` Small nets with one and two hidden layers; examples
