@@ -76,6 +76,7 @@ In `lecture_examples/quiz_extras`
     - `alphabeta_verbose.py`, `test_alphabeta_verbose.py` Negamax alphabeta, print each step
     - `alphabeta_depth_limited.py` Version with limited search depth
         - `test_alphabeta_depth_limited_tictactoe.py`
+    - `alphabeta_with_move.py` Alphabeta algorithm, plus remembering the move at the root
 
 ### Search enhancements: transposition table
 - `transposition_table_simple.py` Python dictionary as Transposition Table
