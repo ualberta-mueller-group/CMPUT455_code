@@ -21,13 +21,6 @@ class TicTacToe(Game3Outcome):
         super().reset_game()
         self.board = [EMPTY] * 9
 
-    def reset_to_move_number(self, move_nr: int) -> None:
-        num_undos = self.move_number() - move_nr
-        assert num_undos >= 0
-        for _ in range(num_undos):
-            self.undo_move()
-        assert self.move_number() == move_nr
-
     def end_of_game(self) -> bool:
         return (   len(self.moves) == 9
                 or self.winner() != EMPTY
