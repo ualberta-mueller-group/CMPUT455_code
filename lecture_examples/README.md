@@ -111,5 +111,5 @@ In `lecture_examples/quiz_extras`
 - NOT UPDATED YET `test_all.py` Run all unit tests, and test some additional functions
 
 ## (still to check)
-`play_matches_tic_tac_toe.py`
+`play_matches_tic_tac_toe.py`, `hex.py`, `solve_hex.py`
 
