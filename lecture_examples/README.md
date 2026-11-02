@@ -104,11 +104,12 @@ In `lecture_examples/quiz_extras`
 ## Lecture 15 - UCB
 - `ucb.py`, `demo\_ucb.py` UCB algorithm and demo
 
-## Other
-- NOT UPDATED YET `test_all.py` Run all unit tests, and test some other functions
-
-## (For future lectures)
-
-
-### (Lecture Neural Nets)
+### Lecture 19 - Neural Nets
 - `nn.py`, `nn3.py` Small nets with one and two hidden layers; examples
+
+## Other
+- NOT UPDATED YET `test_all.py` Run all unit tests, and test some additional functions
+
+## (still to check)
+`play_matches_tic_tac_toe.py`
+
