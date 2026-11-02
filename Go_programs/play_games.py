@@ -3,8 +3,9 @@
 # Set the path to your python3 above
 
 from board import GoBoard
+from engine import GoEngine
 
-def play_games(player) -> None:
+def play_games(player: GoEngine) -> None:
     """
     play 100 self-play games on 7x7 for profiling.
     """
