@@ -102,14 +102,30 @@ In `lecture_examples/quiz_extras`
 - `bernoulli_mystery.py` Guess the unknown parameter p of a repeated Bernoulli experiment
 
 ## Lecture 15 - UCB
-- `ucb.py`, `demo\_ucb.py` UCB algorithm and demo
+- `ucb.py`, `demo_ucb.py` UCB algorithm and demo
 
-### Lecture 19 - Neural Nets
+## Lecture 19 - Neural Nets
 - `nn.py`, `nn3.py` Small nets with one and two hidden layers; examples
 
-## Other
-- NOT UPDATED YET `test_all.py` Run all unit tests, and test some additional functions
+### Code and data for learning neural net for TicTacToe
+By Henry Du (former TA in 455), last checked before 2024. If someone tries it, let me know if it works or not.
+- `tictactoe_nnet.tgz`
+Code and data are in a directory `tictactoe_nnet`. There are python files for training and play, and two data files
+with the training examples (all solved TicTacToe positions) and a trained network. The most important files are:
+    - `README.md`
+    - `multilayer_perceptron.py` - implementation of the network
+    - `tic_tac_toe_train_nnet.py` - training the network
+    - `nn_player.py` - a player using the trained neural net `data/tic_tac_toe_NN.npz`
+    - `db_player.py` - a perfect player using the ttt database in `data/tic_tac_toe_DB`
+    - `data/tic_tac_toe_DB` - perfect play database
+    - `data/tic_tac_toe_NN.npz` - neural net trained for TicTacToe
+    - Some more python files to support standalone GTP-based players
 
-## (still to check)
-`play_matches_tic_tac_toe.py`, `hex.py`, `solve_hex.py`
+
+## Other
+- NOT UPDATED YET, missing most of the second half of the code `test_all.py` Run all unit tests, and test some additional functions
+
+## (still to check, work to do)
+- `play_matches_tic_tac_toe.py` not checked
+- `hex.py`, `solve_hex.py` this seems to work in principle, but is super slow. Horrible move ordering I think.
 
