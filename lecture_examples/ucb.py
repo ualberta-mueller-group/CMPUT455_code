@@ -5,6 +5,7 @@
 from bernoulli import bernoulli_experiment
 from math import sqrt, log
 from dataclasses import dataclass
+from typing import List
 
 INFINITY = float('inf')
 
@@ -43,7 +44,7 @@ def most_pulled_arm(stats: list[UCBStatistic]) -> int:
 def simulation_result(p: float) -> int:
     return bernoulli_experiment(p)
 
-def run_ucb(payoffs: list[float], C: float, max_simulations: int) -> None:
+def run_ucb(payoffs: list[float], C: float, max_simulations: int) -> List[UCBStatistic]:
     num_arms = len(payoffs)
     stats = [UCBStatistic() for _ in range(num_arms)]
     assert len(stats) == len(payoffs)
