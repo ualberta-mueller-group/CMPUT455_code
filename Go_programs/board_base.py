@@ -3,8 +3,7 @@ board_base.py
 Basic definitions and helper functions for Go board.
 This file is imported by board.py.
 """
-
-import numpy as np
+from typing import List, Sequence
 import random
 
 """
@@ -12,11 +11,13 @@ Encoding of colors on and off a Go board.
 """
 GO_COLOR = int
 
-EMPTY = GO_COLOR(0)
-BLACK = GO_COLOR(1)
-WHITE = GO_COLOR(2)
-BORDER = GO_COLOR(3)
+BLACK: GO_COLOR = 0
+WHITE: GO_COLOR = 1
+EMPTY: GO_COLOR = 2
+BORDER: GO_COLOR = 3
 
+BoardArray = List[GO_COLOR]
+BoardBoolArray = List[bool]
 
 def is_black_white(color: GO_COLOR) -> bool:
     return color == BLACK or color == WHITE
@@ -29,9 +30,9 @@ def opponent(color: GO_COLOR) -> GO_COLOR:
 
 """
 A GO_POINT is a point on a Go board.
-It is encoded as a 32-bit integer, using the numpy type.
+It is encoded as an integer
 """
-GO_POINT = np.int32
+GO_POINT = int
 
 """
 Encoding of special pass move
@@ -59,15 +60,35 @@ See the documentation under coord_to_point.
 def board_array_size(size: int) -> int:
     return size * size + 3 * (size + 1)
 
-"""
-where1d: Helper function for using np.where with 1-d arrays.
-The result of np.where is a tuple which contains the indices 
-of elements that fulfill the condition.
-For 1-d arrays, this is of type Tuple[ndarray].
-The [0] indexing is needed to extract the ndarray result from the singleton tuple.
-"""
-def where1d(condition: np.ndarray) -> np.ndarray:
-    return np.where(condition)[0]
+def where_condition(condition: Sequence[bool]) -> List[int]:
+    """
+    Returns list of indices where `condition` is True.
+    """
+    return [idx for idx, is_true in enumerate(condition) if is_true]
+
+def where_value(board: List[int], value: int) -> List[int]:
+    """
+    Returns list of indices where board element equals value.
+    """
+    return [idx for idx, v in enumerate(board) if v == value]    
+
+def where_bool(board: BoardBoolArray) -> List[int]:
+    """
+    Returns list of indices where board element is True.
+    """
+    return [idx for idx, v in enumerate(board) if v]
+
+def full(size: int, fill_value: int) -> BoardArray:
+    """
+    Create a list of length `size`, filled with `fill_value`.
+    """
+    return [fill_value] * size
+
+def full_bool(size: int, fill_value: bool) -> BoardBoolArray:
+    """
+    Create a list of length `size`, filled with `fill_value`.
+    """
+    return [fill_value] * size
 
 def coord_to_point(row: int, col: int, board_size: int) -> GO_POINT:
     """
@@ -94,17 +115,17 @@ def coord_to_point(row: int, col: int, board_size: int) -> GO_POINT:
     00   01 02 03
 
     For example, with the mapping of colors to integers above,
-    EMPTY = 0, BORDER = 3,
+    EMPTY = 2, BORDER = 3,
     the empty 3x3 board is encoded like this:
 
     3  3  3  3  3
-    3  0  0  0
-    3  0  0  0
-    3  0  0  0
+    3  2  2  2
+    3  2  2  2
+    3  2  2  2
     3  3  3  3
 
     This board is represented by the array
-    [3,3,3,3,  3,0,0,0,  3,0,0,0,  3,0,0,0,  3,3,3,3,3]
+    [3,3,3,3,  3,2,2,2,  3,2,2,2,  3,2,2,2,  3,3,3,3,3]
     """
     assert 1 <= row
     assert row <= board_size

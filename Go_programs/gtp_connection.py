@@ -7,7 +7,6 @@ in the Deep-Go project by Isaac Henrion and Amos Storkey
 at the University of Edinburgh.
 """
 import traceback
-import numpy as np
 import re
 from sys import stdin, stdout, stderr
 from typing import Any, Callable, Dict, List, Tuple
@@ -23,12 +22,11 @@ from board_base import (
     coord_to_point,
     opponent
 )
-from board import GoBoard
-from board_util import GoBoardUtil
+from board_abstract import GoBoardAbstractBase
 from engine import GoEngine
 
 class GtpConnection:
-    def __init__(self, go_engine: GoEngine, board: GoBoard, debug_mode: bool = False) -> None:
+    def __init__(self, go_engine: GoEngine, board: GoBoardAbstractBase, debug_mode: bool = False) -> None:
         """
         Manage a GTP connection for a Go-playing engine
 
@@ -41,7 +39,7 @@ class GtpConnection:
         """
         self._debug_mode: bool = debug_mode
         self.go_engine = go_engine
-        self.board: GoBoard = board
+        self.board = board
         self.commands: Dict[str, Callable[[List[str]], None]] = {
             "protocol_version": self.protocol_version_cmd,
             "quit": self.quit_cmd,
@@ -109,11 +107,11 @@ class GtpConnection:
             try:
                 self.commands[command_name](args)
             except Exception as e:
-                self.debug_msg("Error executing command {}\n".format(str(e)))
-                self.debug_msg("Stack Trace:\n{}\n".format(traceback.format_exc()))
+                self.debug_msg(f"Error executing command {str(e)}\n")
+                self.debug_msg(f"Stack Trace:\n{traceback.format_exc()}\n")
                 raise e
         else:
-            self.debug_msg("Unknown command: {}\n".format(command_name))
+            self.debug_msg(f"Unknown command: {command_name}\n")
             self.error("Unknown command")
             stdout.flush()
 
@@ -135,12 +133,12 @@ class GtpConnection:
 
     def error(self, error_msg: str) -> None:
         """ Send error msg to stdout """
-        stdout.write("? {}\n\n".format(error_msg))
+        stdout.write(f"? {error_msg}\n\n")
         stdout.flush()
 
     def respond(self, response: str = "") -> None:
         """ Send response to stdout """
-        stdout.write("= {}\n\n".format(response))
+        stdout.write(f"= {response}\n\n")
         stdout.flush()
 
     def reset(self, size: int) -> None:
@@ -150,7 +148,8 @@ class GtpConnection:
         self.board.reset(size)
 
     def board2d(self) -> str:
-        return str(GoBoardUtil.get_twoD_board(self.board))
+        bd = self.board.get_twoD_board()
+        return "\n".join(str(row) for row in bd)
 
     def protocol_version_cmd(self, args: List[str]) -> None:
         """ Return the GTP protocol version being used (always 2) """
@@ -210,7 +209,7 @@ class GtpConnection:
         """
         board_color: str = args[0].lower()
         color: GO_COLOR = color_to_int(board_color)
-        moves: List[GO_POINT] = GoBoardUtil.generate_legal_moves(self.board, color)
+        moves: List[GO_POINT] = self.board.generate_legal_moves(color)
         gtp_moves: List[str] = []
         for move in moves:
             coords: Tuple[int, int] = point_to_coord(move, self.board.size)
@@ -234,15 +233,14 @@ class GtpConnection:
             coord = move_to_coord(args[1], self.board.size)
             move = coord_to_point(coord[0], coord[1], self.board.size)
             if not self.board.play_move(move, color):
-                self.respond("Illegal Move: {}".format(board_move))
+                self.respond(f"Illegal Move: {board_move}")
                 return
             else:
                 self.debug_msg(
-                    "Move: {}\nBoard:\n{}\n".format(board_move, self.board2d())
-                )
+                    f"Move: {board_move}\nBoard:\n{self.board2d()}\n")
             self.respond()
         except Exception as e:
-            self.respond("Error: {}".format(str(e)))
+            self.respond(f"Error: {str(e)}")
 
     def genmove_cmd(self, args: List[str]) -> None:
         """ generate a move for color args[0] in {'b','w'} """
@@ -255,7 +253,7 @@ class GtpConnection:
             self.board.play_move(move, color)
             self.respond(move_as_string)
         else:
-            self.respond("Illegal move: {}".format(move_as_string))
+            self.respond(f"Illegal move: {move_as_string}")
 
 
 def point_to_coord(point: GO_POINT, boardsize: int) -> Tuple[int, int]:
@@ -307,9 +305,9 @@ def move_to_coord(point_str: str, board_size: int) -> Tuple[int, int]:
         if row < 1:
             raise ValueError
     except (IndexError, ValueError):
-        raise ValueError("invalid point: '{}'".format(s))
+        raise ValueError(f"invalid point: '{s}'")
     if not (col <= board_size and row <= board_size):
-        raise ValueError("point off board: '{}'".format(s))
+        raise ValueError(f"point off board: '{s}'")
     return row, col
 
 

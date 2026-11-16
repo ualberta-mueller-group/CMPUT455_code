@@ -1,21 +1,17 @@
-#!/usr/local/bin/python3
-# /usr/bin/python3
-# Set the path to your python3 above
 
 import unittest
-from unittest.mock import patch
-import numpy as np
-from board_base import BLACK, WHITE, EMPTY, BORDER, PASS, GO_POINT, GO_COLOR, where1d
+from board_base import GO_POINT, GO_COLOR
 from board import GoBoard
 from engine import GoEngine
 from gtp_connection import GtpConnection
+from board_abstract import GoBoardAbstractBase
 
 class MockGoEngine(GoEngine):
     def __init__(self) -> None:
         self.name = "Mock"
         self.version = 1.234
 
-    def get_move(self, board: GoBoard, color: GO_COLOR) -> GO_POINT:
+    def get_move(self, board: GoBoardAbstractBase, color: GO_COLOR) -> GO_POINT:
         return board.pt(1, 1)
 
 
